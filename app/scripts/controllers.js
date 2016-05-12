@@ -67,13 +67,12 @@ angular.module('confusionApp')
             };
         }])
 
-        .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+        .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
             $scope.sortby = '';
-            
-            $scope.dish= menuFactory.getDish(3);
-                        
-        }])
-
+            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+            $scope.dish = dish;
+         }])
+        
         .controller('DishCommentController', ['$scope', function($scope) {
             
             //Step 1: Create a JavaScript object to hold the comment from the form
